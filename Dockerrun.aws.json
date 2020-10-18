@@ -1,0 +1,38 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "api",
+      "image": "jbsulli/multi-docker-api",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "client",
+      "image": "jbsulli/multi-docker-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "jbsulli/multi-docker-nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "api",
+        "client"
+      ]
+    },
+    {
+      "name": "worker",
+      "image": "jbsulli/multi-docker-worker",
+      "hostname": "worker",
+      "essential": false
+    }
+  ]
+}

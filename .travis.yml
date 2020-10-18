@@ -21,3 +21,15 @@ after_success:
   - docker push jbsulli/multi-docker-client
   - docker push jbsulli/multi-docker-nginx
   - docker push jbsulli/multi-docker-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-west-2-113411857242
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
