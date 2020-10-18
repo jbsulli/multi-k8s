@@ -5,18 +5,21 @@
       "name": "api",
       "image": "jbsulli/multi-docker-api",
       "hostname": "api",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "client",
       "image": "jbsulli/multi-docker-client",
       "hostname": "client",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "nginx",
       "image": "jbsulli/multi-docker-nginx",
       "essential": true,
+      "memory": 128,
       "portMappings": [
         {
           "hostPort": 80,
@@ -32,7 +35,8 @@
       "name": "worker",
       "image": "jbsulli/multi-docker-worker",
       "hostname": "worker",
-      "essential": false
+      "essential": false,
+      "memory": 128
     }
   ]
 }
